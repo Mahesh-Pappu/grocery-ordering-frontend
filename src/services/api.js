@@ -1,4 +1,4 @@
-const API_BASE_URL =  'https://mahesh-grocery-backend.onrender.com'; // For Vite, use VITE_ prefix
+const API_BASE_URL =  'https://mahesh-grocery-backend.onrender.com/api'; // For Vite, use VITE_ prefix
 
 async function handleResponse(response) {
   const contentType = response.headers.get('content-type');
