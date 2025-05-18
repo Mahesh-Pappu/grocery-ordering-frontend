@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate, Navigate, Link } from 'react-router-dom';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/Signuppage';
+import SignupPage from './pages/SignupPage';
 import ProductsPage from './pages/ProductsPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
