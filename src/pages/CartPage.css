@@ -1,0 +1,229 @@
+/* frontend/src/pages/CartPage.css */
+
+/* General container for the cart page is handled by App.jsx's main.container */
+.cart-page-title {
+    font-size: 2rem; /* or var(--h1-font-size) */
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .cart-empty-container {
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+  .cart-empty-container h1 {
+    font-size: 1.875rem; /* or var(--h2-font-size) */
+    color: var(--text-color);
+    margin-bottom: 1rem;
+  }
+  .cart-empty-container p {
+    color: var(--text-light-color);
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+  }
+  .cart-empty-container .start-shopping-btn {
+    /* Uses .btn and .btn-primary from index.css */
+    padding: 0.75rem 2rem;
+    font-size: 1.125rem;
+  }
+  
+  
+  .cart-items-container {
+    background-color: var(--white-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 0.5rem; /* 8px */
+    padding: 1.5rem; /* 24px */
+    position: relative; /* For loading overlay */
+  }
+  
+  .cart-loading-overlay {
+    position: absolute;
+    inset: 0; /* Covers the entire parent */
+    background-color: rgba(255, 255, 255, 0.75); /* Semi-transparent white */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    border-radius: 0.5rem; /* Match parent */
+  }
+  .cart-loading-overlay p {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--primary-color);
+  }
+  
+  .cart-item {
+    display: flex;
+    flex-direction: column; /* Stack on small screens */
+    align-items: flex-start; /* Align items to start on small screens */
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .cart-item:last-child {
+    border-bottom: none;
+  }
+  
+  .cart-item-main-details {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem; /* Space on small screens before controls */
+    width: 100%; /* Take full width on small screens */
+  }
+  
+  .cart-item-image-container {
+    width: 5rem; /* 80px */
+    height: 5rem; /* 80px */
+    min-width: 5rem; /* Prevent shrinking */
+    margin-right: 1rem; /* 16px */
+    border-radius: 0.25rem; /* 4px */
+    overflow: hidden; /* Important for image object-fit */
+    background-color: #f0f0f0; /* Placeholder background */
+  }
+  .cart-item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Or 'contain' if you prefer */
+    object-position: center;
+    display: block;
+  }
+  
+  .cart-item-info {
+    flex-grow: 1;
+  }
+  .cart-item-info h2 { /* Product Name */
+    font-size: 1.125rem; /* 18px */
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.125rem; /* 2px */
+  }
+  .cart-item-info p { /* Price per unit */
+    font-size: 0.9rem; /* 14.4px */
+    color: var(--text-light-color);
+    margin-bottom: 0;
+  }
+  
+  .cart-item-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* For small screens */
+    width: 100%; /* Take full width on small screens */
+    gap: 0.5rem; /* Space between elements */
+  }
+  
+  /* Reusing quantity adjuster styles from ProductCard.css, or redefine slightly */
+  .cart-quantity-adjuster { /* If you want specific cart page styling */
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+  }
+  .cart-quantity-adjuster button {
+    padding: 0.5rem 0.75rem;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    font-size: 1rem;
+    line-height: 1;
+  }
+  .cart-quantity-adjuster button:hover:not(:disabled) { background-color: #e5e7eb; }
+  .cart-quantity-adjuster button:disabled { background-color: #f9fafb; color: #cbd5e1; cursor: not-allowed; }
+  .cart-quantity-adjuster button:first-child { border-top-left-radius: 0.25rem; border-bottom-left-radius: 0.25rem; border-right: 1px solid var(--border-color); }
+  .cart-quantity-adjuster button:last-child { border-top-right-radius: 0.25rem; border-bottom-right-radius: 0.25rem; border-left: 1px solid var(--border-color); }
+  
+  .cart-quantity-display {
+    padding: 0.5rem 0.75rem;
+    min-width: 2.5rem;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  
+  .cart-item-subtotal {
+    font-size: 1rem; /* 16px */
+    font-weight: 600;
+    color: var(--text-color);
+    min-width: 5rem; /* 80px - For alignment */
+    text-align: right;
+  }
+  
+  .cart-item-remove-button {
+    /* Uses .btn and .btn-danger or text link styles */
+    color: var(--danger-color);
+    background-color: transparent;
+    border: none;
+    padding: 0.5rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .cart-item-remove-button:hover {
+    color: var(--danger-dark-color);
+    text-decoration: underline;
+  }
+  .cart-item-remove-button:disabled {
+      color: #fda4af; /* Lighter red when disabled */
+      cursor: not-allowed;
+  }
+  
+  /* Cart Summary Section */
+  .cart-summary {
+    margin-top: 2rem; /* 32px */
+    padding-top: 1.5rem; /* 24px */
+    border-top: 1px solid var(--border-color);
+  }
+  .cart-total-display {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 1.5rem; /* 24px */
+  }
+  .cart-total-display span:first-child { /* "Total:" label */
+    font-size: 1.25rem; /* 20px */
+    font-weight: 600;
+    color: var(--text-color);
+  }
+  .cart-total-display span:last-child { /* Actual total amount */
+    font-size: 1.5rem; /* 24px */
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-left: 1rem; /* 16px */
+  }
+  
+  .checkout-button-container {
+    text-align: right;
+  }
+  .checkout-button-container .checkout-btn {
+    /* Uses .btn and .btn-primary from index.css */
+    padding: 0.75rem 2.5rem; /* 12px 40px */
+    font-size: 1.125rem; /* 18px */
+  }
+  .checkout-button-container .checkout-btn:disabled {
+      background-color: #9ca3af;
+  }
+  
+  
+  /* Responsive adjustments for CartPage */
+  @media (min-width: 640px) { /* sm screens and up */
+    .cart-item {
+      flex-direction: row; /* Align items in a row */
+      align-items: center; /* Vertically align items in the row */
+      justify-content: space-between; /* Distribute space */
+    }
+    .cart-item-main-details {
+      margin-bottom: 0; /* No margin needed as it's part of the row now */
+      flex-grow: 1; /* Allow main details to take available space */
+      margin-right: 1rem; /* Space before actions */
+    }
+    .cart-item-actions {
+      width: auto; /* Don't take full width, let content decide */
+      justify-content: flex-end; /* Align actions to the end */
+      flex-shrink: 0; /* Prevent actions from shrinking too much */
+    }
+    .cart-quantity-adjuster {
+      margin-right: 1rem; /* Space between quantity and subtotal */
+    }
+    .cart-item-subtotal {
+      margin-right: 1rem; /* Space between subtotal and remove button */
+    }
+  }

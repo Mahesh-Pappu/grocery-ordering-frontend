@@ -1,0 +1,28 @@
+# Dependencies
+/node_modules
+
+# Build output
+/dist
+/build
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+# If you have an example.env you WANT to commit, uncomment next line
+# !.env.example 
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+.vite # Vite cache
+
+# IDE / Editor specific
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db

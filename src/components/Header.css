@@ -1,0 +1,123 @@
+/* frontend/src/components/Header.css */
+.app-header {
+    background-color: var(--white-color);
+    height: var(--header-height);
+    padding: 0 1rem; /* Use container padding instead if header content is inside .container */
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: fixed; /* Sticky header */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 1rem; /* If header itself has padding, this might not be needed or adjust */
+  }
+  
+  .logo a {
+    font-size: 1.75rem; /* 28px */
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  .logo a:hover {
+    color: var(--primary-dark-color);
+    text-decoration: none;
+  }
+  
+  .navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .navigation ul li {
+    margin-left: 1.5rem; /* 24px */
+  }
+  
+  .navigation ul li a,
+  .nav-link { /* For links not in ul>li like "My Account" */
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+  }
+  .navigation ul li a:hover,
+  .nav-link:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  .navigation ul li a::after,
+  .nav-link::after { /* Underline effect on hover */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease-in-out;
+  }
+  .navigation ul li a:hover::after,
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  
+  .user-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-actions .nav-link, /* For "Hi, User!" or "My Account" */
+  .user-actions .nav-icon-link {
+    margin-right: 1.25rem; /* 20px */
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .user-actions .nav-icon-link:hover {
+      color: var(--primary-color);
+  }
+  .user-actions .nav-icon-link svg { /* If using SVG icons */
+      width: 1.5rem;
+      height: 1.5rem;
+      vertical-align: middle;
+  }
+  
+  
+  .auth-button {
+    padding: 0.5rem 1rem; /* 8px 16px */
+    font-size: 0.9rem;
+    margin-left: 0.75rem; /* 12px */
+    border: 1px solid var(--primary-color);
+    background-color: transparent;
+    color: var(--primary-color);
+  }
+  .auth-button:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+  }
+  
+  .auth-button.signup {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-color: var(--primary-color);
+  }
+  .auth-button.signup:hover {
+    background-color: var(--primary-dark-color);
+    border-color: var(--primary-dark-color);
+  }

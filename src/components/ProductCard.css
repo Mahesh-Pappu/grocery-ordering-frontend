@@ -1,0 +1,164 @@
+/* frontend/src/components/ProductCard.css */
+.product-card {
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem; /* 8px */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* Important for image fit and rounded corners on image */
+    background-color: var(--white-color);
+    display: flex; /* Make the card itself a flex container */
+    flex-direction: column; /* Stack children vertically */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    /* Remove fixed height from here if you want content to determine it,
+       but ensure all internal elements contribute to a consistent height.
+       Alternatively, set a fixed height here if all cards MUST be exactly the same.
+       height: 450px; /* Example: Fixed height for all cards - adjust as needed */
+  }
+  .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .product-card-image-container { /* NEW WRAPPER for the image */
+    width: 100%;
+    height: 12rem; /* 192px - FIXED HEIGHT FOR IMAGE AREA - Adjust as needed */
+    overflow: hidden; /* Ensures image doesn't break rounded corners if card has them */
+    background-color: #f0f0f0; /* Placeholder background for images */
+  }
+  
+  .product-card-image {
+    width: 100%;
+    height: 100%; /* Make image fill its container */
+    object-fit: contain;   /* Crucial for image fitting:
+                             'cover': Fills dimensions, maintains aspect ratio (crops if needed)
+                             'contain': Fits entire image, maintains aspect ratio (may letterbox) */
+    object-position: center; /* Center the image within its frame if 'cover' crops it */
+    display: block; /* Remove extra space below image */
+  }
+  
+  .product-card-content {
+    padding: 1rem; /* 16px */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* THIS IS KEY: Allows this section to grow and fill remaining card space */
+  }
+  
+  .product-card-name {
+    font-size: 1.125rem; /* 18px - Adjusted for better balance */
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.375rem; /* 6px */
+    line-height: 1.4;
+    /* To ensure consistent height for names (e.g., 2 lines) */
+    min-height: 2.8em; /* Adjust based on font size and line height for approx 2 lines */
+    /* Use text-overflow for long names if desired: */
+    /*
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    */
+  }
+  
+  .product-card-description {
+    font-size: 0.875rem; /* 14px */
+    color: var(--text-light-color);
+    margin-bottom: 0.75rem; /* 12px */
+    line-height: 1.5;
+    flex-grow: 1; /* THIS IS KEY: Pushes price/buttons down, filling available space */
+    /* To ensure consistent height for descriptions (e.g., 3 lines) */
+    min-height: 4.5em; /* Adjust based on font size and line height for approx 3 lines */
+    /* Use text-overflow for long descriptions if desired: */
+    /*
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    */
+  }
+  
+  .product-card-price {
+    font-size: 1.125rem; /* 18px */
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem; /* 16px */
+  }
+  .product-card-price .unit {
+      font-size: 0.8rem;
+      color: var(--text-light-color);
+      font-weight: 400;
+  }
+  
+  .product-card-out-of-stock {
+      color: var(--danger-color);
+      font-weight: 600;
+      margin-bottom: 1rem; /* Consistent margin */
+      text-align: center;
+  }
+  
+  .quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem; /* 16px */
+  }
+  .quantity-control-label {
+      font-size: 0.875rem;
+      color: var(--text-color);
+  }
+  
+  .quantity-adjuster {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem; /* 4px */
+  }
+  .quantity-adjuster button {
+    padding: 0.5rem 0.75rem;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    font-size: 1rem;
+    line-height: 1;
+  }
+  .quantity-adjuster button:hover:not(:disabled) {
+    background-color: #e5e7eb;
+  }
+  .quantity-adjuster button:disabled {
+      background-color: #f9fafb;
+      color: #cbd5e1;
+      cursor: not-allowed;
+  }
+  .quantity-adjuster button:first-child {
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    border-right: 1px solid var(--border-color);
+  }
+  .quantity-adjuster button:last-child {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-left: 1px solid var(--border-color);
+  }
+  .quantity-display {
+    padding: 0.5rem 0.75rem; /* Adjusted padding */
+    min-width: 2.5rem; /* 40px - Adjusted width */
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.9rem; /* Slightly smaller quantity display */
+  }
+  
+  .add-to-cart-button {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-weight: 600;
+    padding: 0.75rem; /* 12px */
+    border-radius: 0.375rem; /* Match other buttons */
+  }
+  .add-to-cart-button:hover {
+    background-color: var(--primary-dark-color);
+  }
+  .add-to-cart-button:disabled { /* If you add disabled state */
+      background-color: #9ca3af;
+  }
