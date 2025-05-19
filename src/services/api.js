@@ -1,5 +1,4 @@
-const API_BASE_URL =  'https://mahesh-grocery-backend.onrender.com/api'; // For Vite, use VITE_ prefix
-
+const API_BASE_URL = 'http://Mahesh45.pythonanywhere.com/api'; 
 async function handleResponse(response) {
   const contentType = response.headers.get('content-type');
   let data;
