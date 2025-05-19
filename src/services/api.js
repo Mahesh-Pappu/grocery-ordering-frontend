@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://Mahesh45.pythonanywhere.com/api'; 
+const API_BASE_URL = 'https://Mahesh45.pythonanywhere.com/api'; 
 async function handleResponse(response) {
   const contentType = response.headers.get('content-type');
   let data;
